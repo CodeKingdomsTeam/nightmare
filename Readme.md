@@ -167,6 +167,9 @@ Mousedown the `selector` element once.
 #### .type(selector[, text])
 Enters the `text` provided into the `selector` element.  Empty or falsey values provided for `text` will clear the selector's value.
 
+#### .sendInputEvent(event)
+Send the input event to the page. See [Electron Docs](https://github.com/atom/electron/blob/master/docs/api/web-contents.md#webcontentssendinputeventevent).
+
 #### .check(selector)
 checks the `selector` checkbox element.
 
