@@ -1,4 +1,31 @@
 
+2.2.0 / 2016-02-16
+==================
+
+  * .then() now returns a full promise instead of nightmare. update yahoo example.
+
+2.1.6 / 2016-02-01
+==================
+
+  * Fix failed wait with queued up functions
+  * fix fullscreen switching (#434)
+
+2.1.5 / 2016-02-01
+==================
+
+  * add .insert(selector[, text]).
+  * improve .type(selector[, text]) robustness.
+  * bump electron and fix API updates.
+
+2.1.4 / 2016-01-28
+==================
+
+  * added debugging flags to README
+  * Update use of electron APIs to kill deprecation warnings for 1.0
+  * Implement dock option
+  * added default waitTimout
+  * page event listener fix
+
 2.1.3 / 2016-01-18
 ==================
 
