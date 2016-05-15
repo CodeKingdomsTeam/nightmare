@@ -308,6 +308,9 @@ Changes the `selector` dropdown element to the option with attribute [value=`opt
 #### .scrollTo(top, left)
 Scrolls the page to desired position. `top` and `left` are always relative to the top left corner of the document.
 
+#### .sendInputEvent(event)
+Send the input event to the page. See [Electron Docs](https://github.com/atom/electron/blob/master/docs/api/web-contents.md#webcontentssendinputeventevent).
+
 #### .viewport(width, height)
 
 Set the viewport size.
