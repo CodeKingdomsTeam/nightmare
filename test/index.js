@@ -1261,20 +1261,6 @@ describe('Nightmare', function () {
     })
 
     it('.set([cookie]) & .clearAll() & .get()', function*() {
-      yield nightmare.cookies.set([
-        {
-          name: 'hi',
-          value: 'hello',
-          path: '/'
-        },
-        {
-          name: 'nightmare',
-          value: 'rocks',
-          path: '/cookie'
-        }
-      ]);
-
-      yield nightmare.goto(fixture('simple'));
 
       yield nightmare.cookies.set([
         {
@@ -1289,6 +1275,7 @@ describe('Nightmare', function () {
         }
       ]);
 
+      var cookies = nightmare.cookies
 
       yield nightmare.cookies.clearAll();
 
@@ -1299,8 +1286,36 @@ describe('Nightmare', function () {
 
       cookies = yield nightmare.cookies.get();
       cookies.length.should.equal(0);
-    })
-  });
+    });
+
+    it('should clearStorageData', function*() {
+
+      yield nightmare.goto(fixture('simple'));
+
+      var getLocalStorageItem = function() {
+        return !!localStorage.getItem('nightmareTest')
+      }
+
+      yield nightmare.evaluate(function() {
+        localStorage.setItem('nightmareTest', true)
+      })
+
+      var localStorageItem = yield nightmare.evaluate(getLocalStorageItem)
+
+      localStorageItem.should.be.true
+
+      yield nightmare.clearStorageData({
+        storages: ['local storage']
+      })
+
+      localStorageItem = yield nightmare.evaluate(getLocalStorageItem)
+
+      localStorageItem.should.be.false
+
+      var cookies = yield cookies.get({ path: '/' });
+
+      cookies.length.should.equal(1);
+  })
 
   describe('rendering', function () {
     var nightmare;

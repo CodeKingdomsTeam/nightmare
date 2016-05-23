@@ -576,6 +576,19 @@ regularNightmare
   });
 ```
 
+### .clearStorageData(options)
+
+Clear storage data.
+
+```js
+yield nightmare
+  .clearStorageData({
+    storages: ['local storage']
+  });
+```
+
+Available properties are documented here:  https://github.com/electron/electron/blob/master/docs/api/session.md#sesclearstoragedataoptions-callback
+
 ### Extending Nightmare
 
 #### Nightmare.action(name, [electronAction|electronNamespace], action|namespace)
