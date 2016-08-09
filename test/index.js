@@ -375,6 +375,17 @@ describe('Nightmare', function () {
             setTimeout(() => done(null, false), 500);
           }).should.be.rejected;
       });
+    it('should return final result of wait', function*() {
+
+      const result = yield nightmare
+        .goto(fixture('navigation'))
+        .wait(function () {
+
+          window.waitCounter = window.waitCounter || 0;
+          return window.waitCounter++ >= 1 ? window.waitCounter : null;
+        });
+
+      result.should.equal(2);
     });
 
     it('should fail if navigation target is invalid', function() {
@@ -1316,6 +1327,8 @@ describe('Nightmare', function () {
 
       cookies.length.should.equal(1);
   })
+
+  });
 
   describe('rendering', function () {
     var nightmare;
